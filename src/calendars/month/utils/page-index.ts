@@ -7,17 +7,3 @@ export const getMonthPageIndexByDay = (day: dayjs.Dayjs): MonthPageIndex => {
     month: day.month(),
   };
 };
-export const jalaliMonths = [
-  'فروردین',
-  'اردیبهشت',
-  'خرداد',
-  'تیر',
-  'مرداد',
-  'شهریور',
-  'مهر',
-  'آبان',
-  'آذر',
-  'دی',
-  'بهمن',
-  'اسفند',
-];

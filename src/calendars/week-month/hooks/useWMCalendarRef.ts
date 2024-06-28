@@ -30,6 +30,7 @@ const useWMCalendarRef = (
     weekPagerHeightSv,
     monthPagerHeightSv,
     setTypeProgressEnd,
+    snapToWeek,
   }: {
     type: CalendarType;
     weekPagerRef: RefObject<CalendarMethods>;
@@ -38,6 +39,7 @@ const useWMCalendarRef = (
     monthPagerHeightSv: DerivedValue<number>;
     typeProgressSv: SharedValue<number>;
     setTypeProgressEnd: () => void;
+    snapToWeek?: () => void;
   },
 ) => {
   const emitter = useInit(() => new EventEmitter());
@@ -79,6 +81,9 @@ const useWMCalendarRef = (
           return () => {
             subscription.remove();
           };
+        },
+        snapToWeekMode: () => {
+          snapToWeek?.();
         },
       };
     },

@@ -43,6 +43,7 @@ export type WeekPagerProps = {
   translateY?: SharedValue<number>;
   opacity?: SharedValue<number>;
   windowSize?: number;
+  snapToWeek?: () => void;
 };
 
 const WeekPager = (
@@ -55,6 +56,7 @@ const WeekPager = (
     translateY,
     opacity,
     windowSize,
+    snapToWeek,
   }: WeekPagerProps,
   forwardedRef: ForwardedRef<CalendarMethods>,
 ) => {
@@ -97,6 +99,9 @@ const WeekPager = (
         return;
       }
       pagerRef.current.scrollToIndex({index: targetIndex, animated});
+    },
+    snapToWeekMode: () => {
+      snapToWeek?.();
     },
   }));
 

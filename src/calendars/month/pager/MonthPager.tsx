@@ -5,7 +5,11 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import MonthPageView from './MonthPage';
-import Animated, {SharedValue, useAnimatedRef} from 'react-native-reanimated';
+import {
+  AnimatedStyle,
+  SharedValue,
+  useAnimatedRef,
+} from 'react-native-reanimated';
 import type {FlatList, StyleProp, ViewStyle} from 'react-native';
 import {
   useMonthPageIndexes,
@@ -36,13 +40,14 @@ const keyExtractor = (_: any, index: number) => index.toString();
 
 export type MonthPagerProps = {
   pageHeight: number | GetPageHeight | undefined;
-  style?: StyleProp<Animated.AnimateStyle<StyleProp<ViewStyle>>>;
+  style?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
   pointerEvents?: 'box-none' | 'none' | 'box-only' | 'auto';
   onHeightChanged?: SharedValue<number>;
   syncIndexIfChanged?: Partial<SyncIndexConfig>;
   translateY?: SharedValue<number>;
   opacity?: SharedValue<number>;
   windowSize?: number;
+  snapToWeek?: () => void;
 };
 
 const MonthPager = (
@@ -55,6 +60,7 @@ const MonthPager = (
     translateY,
     opacity,
     windowSize,
+    snapToWeek,
   }: MonthPagerProps,
   forwardedRef: ForwardedRef<CalendarMethods>,
 ) => {
@@ -98,6 +104,9 @@ const MonthPager = (
         return;
       }
       pagerRef.current.scrollToIndex({index: targetIndex, animated});
+    },
+    snapToWeekMode: () => {
+      snapToWeek?.();
     },
   }));
 

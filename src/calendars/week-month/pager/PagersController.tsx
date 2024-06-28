@@ -61,6 +61,7 @@ export type RenderMonthPager = (
     | 'translateY'
     | 'opacity'
     | 'windowSize'
+    | 'snapToWeek'
   >,
 ) => ReactNode;
 export type RenderWeekPager = (
@@ -148,6 +149,9 @@ const PagersController = (
     setTypeProgressEnd,
     monthPagerHeightSv,
     weekPagerHeightSv,
+    snapToWeek: () => {
+      onChangedType('week');
+    },
   });
 
   const containerStyle = useAnimatedStyle(() => {
@@ -256,6 +260,9 @@ const PagersController = (
           syncIndexIfChanged: isMonthType ? syncWithAnim : syncWithoutAnim,
           translateY: monthTranslateYSv,
           opacity: monthOpacitySv,
+          snapToWeek: () => {
+            onChangedType('week');
+          },
         })}
       </Animated.View>
     </GestureDetector>
