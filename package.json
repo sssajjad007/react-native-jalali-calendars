@@ -1,0 +1,158 @@
+{
+  "name": "@sssajjad007/react-native-jalali-calendars",
+  "version": "1.0.0",
+  "description": "React Native jalalli-Calendars",
+  "main": "dist/commonjs/index",
+  "module": "dist/module/index",
+  "types": "dist/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "src",
+    "dist",
+    "android",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "!dist/typescript/example",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
+  "scripts": {
+    "test:run": "jest",
+    "tsc:check": "tsc --noEmit",
+    "lint:check": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint:fix": "eslint --fix \"**/*.{js,ts,tsx}\"",
+    "build:check-all": "yarn lint:fix && yarn tsc:check",
+    "build:resolve": "babel --config-file ./babel.local-namespace-config.js ./src --out-dir ./src --extensions .ts,.js,.tsx,.json --keep-file-extension",
+    "prepack": "yarn build:check-all && cp -r ./src ./copied-src && yarn build:resolve && yarn lint:fix && bob build",
+    "postpublish": "rm -r ./src && cp -r ./copied-src ./src && rm -r ./copied-src",
+    "release": "release-it",
+    "example": "cd example && yarn install",
+    "bootstrap": "yarn install && yarn example"
+  },
+  "keywords": [
+    "react-native",
+    "calendar",
+    "month",
+    "week",
+    "component",
+    "react",
+    "ios",
+    "android",
+    "expo",
+    "web"
+  ],
+  "repository": "https://github.com/sssajjad007/react-native-jalali-calendars",
+  "author": "sssajjad007",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sssajjad007/react-native-jalali-calendars/issues"
+  },
+  "homepage": "https://github.com/sssajjad007/react-native-jalali-calendars#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@rozhkov/react-useful-hooks": "^1.0.8",
+    "debounce": "^1.2.1",
+    "default-values": "^1.0.2",
+    "jalaliday": "^2.3.0",
+    "memoize-one": "^6.0.0"
+  },
+  "peerDependencies": {
+    "dayjs": "^1.10.0",
+    "react": "^16.8 || ^17 || ^18",
+    "react-native": ">=0.64",
+    "jalaliday": "^2.3.0",
+    "react-native-gesture-handler": "^2.0.0",
+    "react-native-reanimated": "^2 || ^3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/plugin-syntax-typescript": "^7.21.4",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@evilmartians/lefthook": "^1.2.2",
+    "@react-native-community/eslint-config": "^3.0.2",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/debounce": "^1.2.1",
+    "@types/jest": "^28.1.2",
+    "@types/react": "^18.2.0",
+    "@types/react-native": "0.70.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "commitlint": "^17.0.2",
+    "dayjs": "^1.11.7",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.1",
+    "pod-install": "^0.1.0",
+    "prettier": "^2.0.5",
+    "react": "18.2.0",
+    "react-native": "0.71.6",
+    "react-native-builder-bob": "^0.20.0",
+    "react-native-gesture-handler": "^2.9.0",
+    "react-native-reanimated": "^3.1.0",
+    "release-it": "^15.0.0",
+    "typescript": "^4.5.2"
+  },
+  "resolutions": {
+    "@types/react": "^18.2.0"
+  },
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "packageManager": "yarn@3.3.1",
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/dist/"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "dist",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  }
+}
