@@ -4,6 +4,7 @@ import {useLocale} from '../providers/LocaleProvider';
 import {useStyles} from '../providers/StylesProvider';
 import {toUpperFirstCase} from '@utils/string';
 import {useCustomRenders} from '../providers/CustomRendersProvider';
+import {parseDigits} from '@utils/persian';
 
 export type HeaderMonthRowProps = {year: number; month: number};
 
@@ -11,7 +12,7 @@ const HeaderMonthRow = ({year, month}: HeaderMonthRowProps) => {
   const {months} = useLocale();
   const {base, prop} = useStyles();
   const {renderMonthHeaderTitle} = useCustomRenders();
-  const title = `${toUpperFirstCase(months[month] ?? '')} ${year}`;
+  const title = `${toUpperFirstCase(months[month] ?? '')} ${parseDigits(year)}`;
 
   const renderTitle = () => {
     if (renderMonthHeaderTitle !== undefined) {

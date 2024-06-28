@@ -1,7 +1,7 @@
 import React, {createContext, PropsWithChildren, useMemo} from 'react';
 import dayjs, {ConfigType} from 'dayjs';
 import {createRequiredContextValueHook} from '@utils/react-hooks';
-import {jalaliMonths} from '../../month/utils/page-index';
+import {jalaliMonths} from '@utils/persian';
 
 type DayjsLocale = string | ILocale;
 export type Locale = DayjsLocale;

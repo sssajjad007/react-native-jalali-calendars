@@ -11,6 +11,7 @@ module.exports = {
   '@utils/react-hooks': `${UT}/react-hooks/index`,
   '@utils/react-native-reanimated': `${UT}/react-native-reanimated/index`,
   '@utils/day': `${UT}/day/index`,
+  '@utils/persian': `${UT}/persian/index`,
   '@utils/event-emitter': `${UT}/event-emitter/index`,
   '@utils/react-native-gesture-handler': `${UT}/react-native-gesture-handler/index`,
 };

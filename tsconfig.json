@@ -12,6 +12,7 @@
       "@utils/react-hooks": ["./src/utils/react-hooks/index"],
       "@utils/react-native-reanimated": ["./src/utils/react-native-reanimated/index"],
       "@utils/day": ["./src/utils/day/index"],
+      "@utils/persian": ["./src/utils/persian/index"],
       "@utils/event-emitter": ["./src/utils/event-emitter/index"],
       "@utils/react-native-gesture-handler": ["./src/utils/react-native-gesture-handler/index"],
     },
