@@ -9,7 +9,7 @@
 
 A declarative cross-platform React Native calendar component for iOS, Android and Web.
 
-<table>
+<!-- <table>
   <tr>
     <td align="center">
       <img src="./docs/gifs/week-calendar.gif" width="500"/>
@@ -31,7 +31,7 @@ A declarative cross-platform React Native calendar component for iOS, Android an
       WMCalendar
     </td>
   </tr>
-</table>
+</table> -->
 
 
 
