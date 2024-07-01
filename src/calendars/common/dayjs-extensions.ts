@@ -5,7 +5,8 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import LocaleData from 'dayjs/plugin/localeData';
 import Weekday from 'dayjs/plugin/weekday';
 import Utc from 'dayjs/plugin/utc';
-import jalaliday from 'jalaliday';
+//@ts-ignore
+import jalaliday from './jalali';
 
 dayjs.extend(dayOfYear);
 dayjs.extend(isSameOrBefore);
