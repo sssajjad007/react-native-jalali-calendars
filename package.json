@@ -65,14 +65,12 @@
     "@rozhkov/react-useful-hooks": "^1.0.8",
     "debounce": "^1.2.1",
     "default-values": "^1.0.2",
-    "jalaliday": "^2.3.0",
     "memoize-one": "^6.0.0"
   },
   "peerDependencies": {
     "dayjs": "^1.10.0",
     "react": "^16.8 || ^17 || ^18",
     "react-native": ">=0.64",
-    "jalaliday": "^2.3.0",
     "react-native-gesture-handler": "^2.0.0",
     "react-native-reanimated": "^2 || ^3"
   },
