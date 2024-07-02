@@ -1,7 +1,7 @@
 {
-  "name": "@sssajjad007/react-native-jalali-calendars",
+  "name": "react-native-jalali-calendars",
   "version": "1.0.0",
-  "description": "React Native jalalli-Calendars",
+  "description": "React Native jalali calendars",
   "main": "dist/commonjs/index",
   "module": "dist/module/index",
   "types": "dist/typescript/index.d.ts",
