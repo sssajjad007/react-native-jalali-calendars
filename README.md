@@ -38,7 +38,7 @@ This package uses the [jalali-plugin-dayjs](https://github.com/sssajjad007/jalal
 ## Installation
 
 ```shell
-yarn add @sssajjad007/react-native-jalali-calendars
+yarn add react-native-jalali-calendars
 ```
 
 Also, you need to install following dependencies, if you already have them you can pass this step
@@ -77,7 +77,7 @@ cd example && yarn install && yarn ios
 
 ```jsx
 import React, {useState} from 'react';
-import {MonthCalendar} from '@sssajjad007/react-native-jalali-calendars';
+import {MonthCalendar} from 'react-native-jalali-calendars';
 
 const App = () => {
   const [selected, setSelected] = useState(null);
@@ -129,7 +129,7 @@ For example, let's set the French localization:
 
 ```jsx
 import React, {useState} from 'react';
-import {MonthCalendar} from '@sssajjad007/react-native-jalali-calendars';
+import {MonthCalendar} from 'react-native-jalali-calendars';
 import 'dayjs/locale/fr'; // import the French localization
 
 const App = () => {
