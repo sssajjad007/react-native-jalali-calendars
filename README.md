@@ -11,15 +11,15 @@ A declarative cross-platform React Native jalali calendar component for iOS, And
 
 This package uses the [jalali-plugin-dayjs](https://github.com/sssajjad007/jalali-plugin-dayjs) as a plugin for the [dayjs](https://day.js.org/) library to provide Persian (Jalali) calendar functionality.
 
-<!-- <table> 
-  <tr>
+<table> 
+  <!-- <tr>
     <td align="center">
       <img src="./docs/gifs/iosM.gif" width="500"/>
       <br />
       WeekCalendar
     </td>
-  </tr>
-</table> -->
+  </tr> -->
+</table>
 <table>
   <tr>
     <td align="center">
