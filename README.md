@@ -7,9 +7,11 @@
 
 # 📅 React Native Jalali Calendars 🗓️
 
-A declarative cross-platform React Native calendar component for iOS, Android and Web.
+A declarative cross-platform React Native jalali calendar component for iOS, Android and Web.
 
-<!-- <table>
+This package uses the [jalali-plugin-dayjs](https://github.com/sssajjad007/jalali-plugin-dayjs) as a plugin for the [dayjs](https://day.js.org/) library to provide Persian (Jalali) calendar functionality.
+
+<!-- <table> 
   <tr>
     <td align="center">
       <img src="./docs/gifs/week-calendar.gif" width="500"/>
@@ -43,7 +45,7 @@ yarn add @sssajjad007/react-native-jalali-calendars
 Also, you need to install following dependencies, if you already have them you can pass this step
 
 ```shell
-yarn add dayjs react-native-gesture-handler react-native-reanimated
+yarn add dayjs jalali-plugin-dayjs react-native-gesture-handler react-native-reanimated
 ```
 For [react-native-gesture-handler][GH-GITHUB] and [react-native-reanimated][REANIMATED-GITHUB]
 additional steps may be required: see their documentations
@@ -228,13 +230,13 @@ Let's look as a simple example:
 ```jsx
 <MonthCalendar
   markedDays={[
-    ['2023-01-01', {selected: true}], // one day
-    ['2023-01-01', '2023-01-14', {dots: [{color: 'red'}]}], // range from '2023-01-01' to '2023-01-14'
+    ['1403-01-01', {selected: true}], // one day
+    ['1403-01-01', '1403-01-14', {dots: [{color: 'red'}]}], // range from '1403-01-01' to '1403-01-14'
   ]}
 />
 ```
 
-The date '2023-01-01' will contain the selected flag and a red dot.
+The date '1403-01-01' will contain the selected flag and a red dot.
 The following records add or override data.
 If the dates with dots intersect, then the dots will be merged into a new list.
 You can set a key for dots that will allow you to distinguish and override these dots.
@@ -270,7 +272,7 @@ You can also pass a list and a selector together.
 - [useDots](#useDots)
 
 #### Base calendar props
-- ```ref?``` [{scrollToToday: function} | undefined] - calendar ref.
+- ```ref?``` [{scrollToToday: function , snapToWeekMode: function} | undefined] - calendar ref.
 - ```locale?``` [string | object | undefined] - localization. More details can be found in the [Localization](#Localization)
 - ```theme?``` [object | undefined] - theme. More details can be found in the [Theme](#Theme)
 - ```selectedDay?``` [string | null | undefined] - selected date. If nothing is specified or undefined is passed, the calendar will use its internal state. Pass null to disable it
