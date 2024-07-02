@@ -6,7 +6,20 @@ type MonthCalendarExampleProps = {
 };
 
 const MonthCalendarExample = ({width}: MonthCalendarExampleProps) => {
-  return <MonthCalendar calendarWidth={width} locale={'fa'} />;
+  return (
+    <MonthCalendar
+      onDayPress={(day) => console.log(day)}
+      dayContainerStyle={({isToday}) => {
+        if (isToday) {
+          return {
+            backgroundColor: 'pink',
+          };
+        }
+      }}
+      calendarWidth={width}
+      locale={'fa'}
+    />
+  );
 };
 
 export default memo(MonthCalendarExample);

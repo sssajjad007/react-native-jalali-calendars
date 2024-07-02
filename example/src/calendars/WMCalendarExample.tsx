@@ -11,6 +11,10 @@ const WMCalendarExample = ({width}: WMCalendarExampleProps) => {
       <WMCalendar
         locale={'fa'}
         calendarWidth={width}
+        markedDays={[
+          ['1403-04-02', '1403-04-14', {dots: [{color: 'red', key: 1}]}], // range from '1403-04-02' to '1403-04-14'
+          ['1403-04-05', '1403-04-10', {dots: [{color: 'green', key: 2}]}], // range from '1403-04-05' to '1403-04-10'
+        ]}
         onDayPress={(day) => {
           console.log(day);
         }}
