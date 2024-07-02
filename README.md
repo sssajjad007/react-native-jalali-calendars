@@ -14,26 +14,26 @@ This package uses the [jalali-plugin-dayjs](https://github.com/sssajjad007/jalal
 <!-- <table> 
   <tr>
     <td align="center">
-      <img src="./docs/gifs/week-calendar.gif" width="500"/>
+      <img src="./docs/gifs/iosM.gif" width="500"/>
       <br />
       WeekCalendar
     </td>
   </tr>
-</table>
+</table> -->
 <table>
   <tr>
     <td align="center">
-      <img src="./docs/gifs/month-calendar.gif" height="204"/>
+      <img src="./docs/gifs/iosM.gif" height="204"/>
       <br />
       MonthCalendar
     </td>
     <td align="center">
-      <img src="./docs/gifs/week-month-calendar.gif" height="204"/>
+      <img src="./docs/gifs/iosWM.gif" height="204"/>
       <br />
       WMCalendar
     </td>
   </tr>
-</table> -->
+</table>
 
 
 
