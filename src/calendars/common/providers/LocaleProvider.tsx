@@ -2,6 +2,7 @@ import React, {createContext, PropsWithChildren, useMemo} from 'react';
 import dayjs, {ConfigType} from 'dayjs';
 import {createRequiredContextValueHook} from '@utils/react-hooks';
 import {jalaliMonths} from '@utils/persian';
+import {configureDayjs} from '../dayjs-config';
 
 type DayjsLocale = string | ILocale;
 export type Locale = DayjsLocale;
@@ -21,6 +22,7 @@ type LocaleProviderProps = PropsWithChildren<{
 
 const LocaleProvider = ({locale, children}: LocaleProviderProps) => {
   const localedDayjs = useMemo<(config?: ConfigType) => dayjs.Dayjs>(() => {
+    configureDayjs(locale!);
     return locale !== undefined
       ? (config?: ConfigType) => dayjs(config).locale(locale)
       : dayjs;
