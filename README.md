@@ -38,7 +38,7 @@ This package uses the [jalali-plugin-dayjs](https://github.com/sssajjad007/jalal
 ## Installation
 
 ```shell
-yarn add @sssajjad007/react-native-jalali-calendars
+yarn add react-native-jalali-calendars
 ```
 
 Also, you need to install following dependencies, if you already have them you can pass this step
