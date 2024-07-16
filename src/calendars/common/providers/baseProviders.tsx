@@ -20,6 +20,7 @@ import ThemeProvider, {CalendarTheme} from './ThemeProvider';
 import TodayProvider from './TodayProvider';
 import DayProvider, {OnDayChanged, OnDayPress} from './DayProvider';
 import type {Day} from '@utils/day';
+import shareData from '../shareData';
 
 export type BaseCalendarProps = {
   locale?: Locale;
@@ -81,6 +82,8 @@ const baseProviders = <
     }: PropsT & BaseCalendarProps,
     forwardedRef: ForwardedRef<MethodsT>,
   ) => {
+    shareData.calendar.getLocale = () => locale as string;
+
     return (
       <LocaleProvider locale={locale}>
         <ThemeProvider theme={theme}>

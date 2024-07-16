@@ -5,7 +5,7 @@ import {useStyles} from '../providers/StylesProvider';
 import LazyAnimatedStylesController from './LazyAnimatedStylesController';
 import DotsRow from '../dot/DotRow';
 import type {FDay} from '@utils/day';
-import {parseDigits} from '@utils/persian';
+import {toPersianNumber} from '@utils/persian';
 
 export type DayViewProps = {
   date: number;
@@ -64,7 +64,7 @@ const DayView = ({
               ]}>
               <Animated.Text
                 style={[base.dayTitleStyle, textColorStyle, dayTextPropStyle]}>
-                {parseDigits(date)}
+                {toPersianNumber(date)}
               </Animated.Text>
               <DotsRow isDaySelected={isSelected} />
             </Animated.View>
