@@ -18,6 +18,7 @@ import type {
   WMCalendarInternalMethods,
 } from '../hooks/useWMCalendarRef';
 import {
+  AnimatedRef,
   DerivedValue,
   interpolate,
   runOnJS,
@@ -33,6 +34,7 @@ import {
   isFastSwipeDown,
   isFastSwipeUp,
 } from '@utils/react-native-gesture-handler';
+import type {AnimatedScrollView} from 'react-native-reanimated/lib/typescript/reanimated2/component/ScrollView';
 
 const useConnectionPayload = (calendarRef: RefObject<CalendarMethods>) => {
   const [payload, setPayload] = useState<ConnectionPayload | null>(null);
@@ -60,7 +62,7 @@ const useConnectionPayload = (calendarRef: RefObject<CalendarMethods>) => {
   return payload;
 };
 
-const useIsScrolledStart = (scrollRef: RefObject<any>) => {
+const useIsScrolledStart = (scrollRef: AnimatedRef<AnimatedScrollView>) => {
   const [isScrolledStart, setIsScrolledStart] = useState(true);
 
   const scrollOffsetSv = useScrollViewOffset(scrollRef);
@@ -103,7 +105,7 @@ const withWMSwitching = <PropsT,>(WrappedScrollView: ComponentType<PropsT>) => {
     }: WrappedScrollViewProps,
     forwardedRef: ForwardedRef<any>,
   ) => {
-    const scrollRef = useAnimatedRef();
+    const scrollRef = useAnimatedRef<AnimatedScrollView>();
     const panRef = useRef();
     const setScrollRefs = useSetRefs(scrollRef, forwardedRef);
     const payload = useConnectionPayload(calendarRef);

@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {MonthCalendar} from '@sssajjad007/react-native-jalali-calendars';
+import {MonthCalendar} from 'react-native-jalali-calendars';
 
 type MonthCalendarExampleProps = {
   width: number;
@@ -15,6 +15,7 @@ const MonthCalendarExample = ({width}: MonthCalendarExampleProps) => {
             backgroundColor: 'pink',
           };
         }
+        return {}; // Add a return statement when isToday is false
       }}
       calendarWidth={width}
       locale={'fa'}

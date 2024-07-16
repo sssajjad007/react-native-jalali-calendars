@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {WeekCalendar} from '@sssajjad007/react-native-jalali-calendars';
+import {WeekCalendar} from 'react-native-jalali-calendars';
 
 type WeekCalendarExampleProps = {
   width: number;

@@ -1,16 +1,18 @@
 import React, {ReactNode, useRef} from 'react';
-import Animated, {
+import {
+  AnimatedStyle,
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
 import {useStyles} from '../providers/StylesProvider';
 import type {TextStyle, ViewStyle} from 'react-native';
+import type {DefaultStyle} from 'react-native-reanimated/lib/typescript/reanimated2/hook/commonTypes';
 
 type AnimatedStylesControllerProps = {
   isSelected: boolean;
   children: (data: {
-    dayContainerStyle: Animated.AnimateStyle<ViewStyle>;
-    textColorStyle: Animated.AnimateStyle<TextStyle>;
+    dayContainerStyle: AnimatedStyle<ViewStyle>;
+    textColorStyle: AnimatedStyle<TextStyle>;
   }) => ReactNode;
 };
 
@@ -22,10 +24,10 @@ const AnimatedStylesController = ({
   // first we need to initialize the styles without selecting, then start the animation when selecting.
   const isSelectedSv = useSharedValue(false);
   const dayContainerStyle = useAnimatedStyle(() => {
-    return base.dayContainerAnimatedStyle(isSelectedSv.value);
+    return base.dayContainerAnimatedStyle(isSelectedSv.value) as DefaultStyle;
   });
   const textColorStyle = useAnimatedStyle(() => {
-    return base.dayTitleAnimatedStyle(isSelectedSv.value);
+    return base.dayTitleAnimatedStyle(isSelectedSv.value) as DefaultStyle;
   });
   isSelectedSv.value = isSelected;
 

@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {WMCalendar} from '@sssajjad007/react-native-jalali-calendars';
+import {WMCalendar} from 'react-native-jalali-calendars';
 import {StyleSheet, Text, View} from 'react-native';
 
 type WMCalendarExampleProps = {width: number};

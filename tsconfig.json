@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@sssajjad007/react-native-jalali-calendars": ["./src/index"],
+      "react-native-jalali-calendars": ["./src/index"],
       "@calendars/common": ["./src/calendars/common/index"],
       "@calendars/month": ["./src/calendars/month/index"],
       "@calendars/week": ["./src/calendars/week/index"],
