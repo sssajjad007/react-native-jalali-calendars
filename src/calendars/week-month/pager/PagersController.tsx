@@ -17,7 +17,7 @@ import Animated, {
   useDerivedValue,
   useSharedValue,
 } from 'react-native-reanimated';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import useSyncWeekMonthPageIndexEffect from '../hooks/useSyncWeekMonthPageIndexEffect';
 import useMonthPagerOffsetY, {
@@ -264,6 +264,7 @@ const PagersController = (
             onChangedType('week');
           },
         })}
+        <View style={styles.handleStyle} />
       </Animated.View>
     </GestureDetector>
   );
@@ -273,6 +274,15 @@ const styles = StyleSheet.create({
   root: {overflow: 'hidden'},
   absolute: {position: 'absolute'},
   opacity0: {opacity: 0},
+  handleStyle: {
+    width: 52,
+    height: 4,
+    borderRadius: 4,
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
+    backgroundColor: '#9D9D9D',
+  },
 });
 
 export default memo(forwardRef(PagersController));
