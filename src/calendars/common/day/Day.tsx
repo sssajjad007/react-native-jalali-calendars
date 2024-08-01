@@ -3,7 +3,7 @@ import type dayjs from 'dayjs';
 import {useCustomRenders} from '../providers/CustomRendersProvider';
 import DayView from './DayView';
 import DayViewEmpty from './DayView.Empty';
-import {useIsDayToday} from '../providers/TodayProvider';
+import {useIsDayToday, useToday} from '../providers/TodayProvider';
 import {useMarkedData} from '../providers/MarkedDaysProvider';
 import {
   useDayInRange,
@@ -14,6 +14,7 @@ import {useStableCallback} from '@rozhkov/react-useful-hooks';
 import DotsContext from '../dot/DotsContext';
 import {EMPTY_ARRAY} from 'default-values';
 import {fDay} from '@utils/day';
+import shareData from '../shareData';
 
 type DayProps = {
   day: dayjs.Dayjs;
@@ -26,9 +27,14 @@ const Day = ({day, isSecondary = false}: DayProps) => {
   const isSelected = useIsSelectedDay(day) || Boolean(markedData?.selected);
   const isDisabled = !useDayInRange(day) || Boolean(markedData?.disabled);
   const isToday = useIsDayToday(day);
+  const today = useToday();
   const fday = useMemo(() => fDay(day), [day]);
   const onDayPress = useOnDayPress();
   const onPress = useStableCallback(() => onDayPress({day, isDisabled}));
+  const onToday = () => {
+    onDayPress({day: today, isDisabled});
+  };
+  shareData.calendar.onTodayPress = onToday;
 
   const renderContent = () => {
     if (renderDay != null) {

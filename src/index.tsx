@@ -40,3 +40,4 @@ export {default as MonthCalendar} from '@calendars/month';
 
 export type {WMCalendarProps, CalendarType} from '@calendars/week-month';
 export {default as WMCalendar, withWMSwitching} from '@calendars/week-month';
+export {default as shareData} from './calendars/common/shareData';

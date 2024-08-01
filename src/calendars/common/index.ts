@@ -68,3 +68,4 @@ export {getDefaultPageHeight, getMonthRowCount} from './page/utils';
 
 export type {BaseCalendarProps} from './providers/baseProviders';
 export {default as baseProviders} from './providers/baseProviders';
+export * from './shareData';

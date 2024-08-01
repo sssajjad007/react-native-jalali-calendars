@@ -1,6 +1,7 @@
 const shareData = {
   calendar: {
     getLocale: () => '',
+    onTodayPress: () => {},
   },
 };
 
