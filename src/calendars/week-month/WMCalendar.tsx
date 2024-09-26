@@ -70,6 +70,7 @@ type WMCalendarCoreProps = {
   onMonthInitialized?: OnMonthInitialized;
   onMonthChanged?: OnMonthChanged;
   calendarWidth?: number;
+  showFirstLetterOfDaysName?: boolean;
 };
 
 const WMCalendarCore = (
@@ -91,6 +92,7 @@ const WMCalendarCore = (
     visibleWeekDaysHeader = true,
     onMonthInitialized,
     onMonthChanged,
+    showFirstLetterOfDaysName,
   }: WMCalendarCoreProps,
   forwardedRef: ForwardedRef<CalendarMethods>,
 ) => {
@@ -198,6 +200,7 @@ const WMCalendarCore = (
             visibleWeekDaysHeader={visibleWeekDaysHeader}
             onMonthInitialized={onMonthInitialized}
             onMonthChanged={onMonthChanged}
+            showFirstLetterOfDaysName={showFirstLetterOfDaysName}
           />
           <PagersController
             ref={forwardedRef}

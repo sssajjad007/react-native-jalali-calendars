@@ -11,6 +11,7 @@ type HeaderProps = {
   visibleWeekDaysHeader: boolean;
   onMonthInitialized: OnMonthInitialized | undefined;
   onMonthChanged: OnMonthChanged | undefined;
+  showFirstLetterOfDaysName?: boolean;
 };
 
 const Header = ({
@@ -18,9 +19,9 @@ const Header = ({
   visibleWeekDaysHeader,
   onMonthInitialized,
   onMonthChanged,
+  showFirstLetterOfDaysName,
 }: HeaderProps) => {
   const [{year, month}] = useMonthPageIndexState();
-
   return (
     <BaseHeader
       year={year}
@@ -29,6 +30,7 @@ const Header = ({
       visibleWeekDaysHeader={visibleWeekDaysHeader}
       onMonthInitialized={onMonthInitialized}
       onMonthChanged={onMonthChanged}
+      showFirstLetterOfDaysName={showFirstLetterOfDaysName}
     />
   );
 };

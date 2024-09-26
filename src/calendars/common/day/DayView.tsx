@@ -50,7 +50,7 @@ const DayView = ({
       : prop.dayTextStyle;
 
   return (
-    <LazyAnimatedStylesController isSelected={isSelected}>
+    <LazyAnimatedStylesController isSelected={isSelected} isToday={isToday}>
       {({dayContainerStyle, textColorStyle}) => {
         return (
           <TouchableWithoutFeedback onPress={onPress}>

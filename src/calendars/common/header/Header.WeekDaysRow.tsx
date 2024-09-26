@@ -20,7 +20,11 @@ const WeekDay = memo(({title}: WeekDayProp) => {
 
 WeekDay.displayName = 'Header.WeekDay';
 
-const HeaderWeekDaysRow = () => {
+const HeaderWeekDaysRow = ({
+  showFirstLetterOfDaysName,
+}: {
+  showFirstLetterOfDaysName?: boolean;
+}) => {
   const {weekDays, weekStart} = useLocale();
   const sortedWeekDays = getSortedWeekDayNames(weekDays, weekStart);
   const {base, prop} = useStyles();
@@ -28,7 +32,10 @@ const HeaderWeekDaysRow = () => {
   return (
     <View style={[base.weekDayRowStyle, prop.weekDayRowStyle]}>
       {sortedWeekDays.map((weekDay) => (
-        <WeekDay key={weekDay} title={weekDay} />
+        <WeekDay
+          key={weekDay}
+          title={showFirstLetterOfDaysName ? weekDay.slice(0, 1) : weekDay}
+        />
       ))}
     </View>
   );

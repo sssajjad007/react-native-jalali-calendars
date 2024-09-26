@@ -36,6 +36,7 @@ import {
 
 const syncWithAnim = {animated: true};
 const syncWithoutAnim = {animated: false};
+const HANDLE_OFFSET = 8;
 
 const defaultProgressAnimConfig: AnimConfig = {
   type: 'spring',
@@ -165,7 +166,7 @@ const PagersController = (
       height: interpolate(
         progress,
         [0, 1],
-        [weekPagerHeight, monthPagerHeight],
+        [weekPagerHeight + HANDLE_OFFSET, monthPagerHeight],
       ),
     };
   });
@@ -279,7 +280,7 @@ const styles = StyleSheet.create({
     height: 4,
     borderRadius: 4,
     position: 'absolute',
-    bottom: 0,
+    bottom: HANDLE_OFFSET,
     alignSelf: 'center',
     backgroundColor: '#9D9D9D',
   },

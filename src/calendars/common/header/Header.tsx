@@ -13,6 +13,7 @@ type HeaderProps = {
   visibleWeekDaysHeader: boolean;
   onMonthInitialized: OnMonthInitialized | undefined;
   onMonthChanged: OnMonthChanged | undefined;
+  showFirstLetterOfDaysName?: boolean;
 };
 
 const Header = ({
@@ -22,13 +23,17 @@ const Header = ({
   visibleWeekDaysHeader,
   onMonthInitialized,
   onMonthChanged,
+  showFirstLetterOfDaysName,
 }: HeaderProps) => {
   useMonthEventsEffect(year, month, onMonthInitialized, onMonthChanged);
-
   return (
     <>
       {visibleMonthHeader && <HeaderMonthRow year={year} month={month} />}
-      {visibleWeekDaysHeader && <HeaderWeekDaysRow />}
+      {visibleWeekDaysHeader && (
+        <HeaderWeekDaysRow
+          showFirstLetterOfDaysName={showFirstLetterOfDaysName}
+        />
+      )}
     </>
   );
 };

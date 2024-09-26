@@ -14,17 +14,22 @@ type AnimatedStylesControllerProps = {
     dayContainerStyle: AnimatedStyle<ViewStyle>;
     textColorStyle: AnimatedStyle<TextStyle>;
   }) => ReactNode;
+  isToday?: boolean;
 };
 
 const AnimatedStylesController = ({
   isSelected,
+  isToday,
   children,
 }: AnimatedStylesControllerProps) => {
   const {base} = useStyles();
   // first we need to initialize the styles without selecting, then start the animation when selecting.
   const isSelectedSv = useSharedValue(false);
   const dayContainerStyle = useAnimatedStyle(() => {
-    return base.dayContainerAnimatedStyle(isSelectedSv.value) as DefaultStyle;
+    return base.dayContainerAnimatedStyle(
+      isSelectedSv.value,
+      isToday,
+    ) as DefaultStyle;
   });
   const textColorStyle = useAnimatedStyle(() => {
     return base.dayTitleAnimatedStyle(isSelectedSv.value) as DefaultStyle;
@@ -46,14 +51,16 @@ const EmptyStylesController = ({children}: EmptyStylesControllerProps) => {
 };
 
 type LazyAnimatedStylesControllerProps = AnimatedStylesControllerProps &
-  EmptyStylesControllerProps;
+  EmptyStylesControllerProps & {isToday: boolean};
 
 // This controller allows you not to initialize animated styles immediately, which allows you to speed up rendering.
 const LazyAnimatedStylesController = ({
   isSelected,
+  isToday,
   children,
 }: LazyAnimatedStylesControllerProps) => {
   const needLoad = isSelected;
+
   const isTrueOnceRef = useRef(needLoad);
   if (needLoad) {
     isTrueOnceRef.current = true;
@@ -62,7 +69,9 @@ const LazyAnimatedStylesController = ({
     ? AnimatedStylesController
     : EmptyStylesController;
 
-  return <Controller isSelected={isSelected} children={children} />;
+  return (
+    <Controller isSelected={isSelected} isToday={isToday} children={children} />
+  );
 };
 
 export default LazyAnimatedStylesController;
