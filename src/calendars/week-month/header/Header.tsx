@@ -17,6 +17,7 @@ type HeaderProps = {
   visibleWeekDaysHeader: boolean;
   onMonthInitialized: OnMonthInitialized | undefined;
   onMonthChanged: OnMonthChanged | undefined;
+  showFirstLetterOfDaysName?: boolean;
 };
 
 const Header = ({
@@ -25,6 +26,7 @@ const Header = ({
   visibleWeekDaysHeader,
   onMonthInitialized,
   onMonthChanged,
+  showFirstLetterOfDaysName,
 }: HeaderProps) => {
   const ldayjs = useLocaledDayjs();
   const [weekPageIndex] = useWeekPageIndexState();
@@ -51,6 +53,7 @@ const Header = ({
       visibleWeekDaysHeader={visibleWeekDaysHeader}
       onMonthInitialized={onMonthInitialized}
       onMonthChanged={onMonthChanged}
+      showFirstLetterOfDaysName={showFirstLetterOfDaysName}
     />
   );
 };

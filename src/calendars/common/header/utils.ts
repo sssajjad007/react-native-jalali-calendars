@@ -26,3 +26,7 @@ export const getSortedWeekDayNames = (
   ...weekDays.slice(weekStart, WEEK_LENGTH),
   ...weekDays.slice(0, weekStart),
 ];
+
+export const getFirstLetterOfWeekDayNames = (weeksName: string[]) => {
+  return weeksName.map((name) => name.slice(0, 1));
+};

@@ -23,6 +23,7 @@ type MonthCalendarCoreProps = {
   pageEnd?: MonthPageIndex | Day;
   // common props
   visibleMonthHeader?: boolean;
+  showFirstLetterOfDaysName?: boolean;
   visibleWeekDaysHeader?: boolean;
   onMonthInitialized?: OnMonthInitialized;
   onMonthChanged?: OnMonthChanged;
@@ -42,6 +43,8 @@ const MonthCalendarCore = (
     visibleWeekDaysHeader = true,
     onMonthInitialized,
     onMonthChanged,
+
+    showFirstLetterOfDaysName,
   }: MonthCalendarCoreProps,
   forwardedRef: ForwardedRef<CalendarMethods>,
 ) => {
@@ -57,6 +60,7 @@ const MonthCalendarCore = (
           visibleWeekDaysHeader={visibleWeekDaysHeader}
           onMonthInitialized={onMonthInitialized}
           onMonthChanged={onMonthChanged}
+          showFirstLetterOfDaysName={showFirstLetterOfDaysName}
         />
         <MonthPager ref={forwardedRef} pageHeight={pageHeight} />
       </CalendarContainer>
