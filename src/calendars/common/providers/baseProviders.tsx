@@ -38,6 +38,8 @@ export type BaseCalendarProps = {
 
   renderDay?: RenderDay;
   renderMonthHeaderTitle?: RenderMonthHeaderTitle;
+
+  isTodayBgColor?: string;
 } & Partial<CalendarStyles>;
 
 const baseProviders = <
@@ -78,6 +80,7 @@ const baseProviders = <
       dayTextStyle,
       dayDotRowStyle,
       dayDotStyle,
+      isTodayBgColor,
       ...restProps
     }: PropsT & BaseCalendarProps,
     forwardedRef: ForwardedRef<MethodsT>,
@@ -113,7 +116,8 @@ const baseProviders = <
                       dayContainerStyle={dayContainerStyle}
                       dayTextStyle={dayTextStyle}
                       dayDotRowStyle={dayDotRowStyle}
-                      dayDotStyle={dayDotStyle}>
+                      dayDotStyle={dayDotStyle}
+                      isTodayBgColor={isTodayBgColor}>
                       <WrappedComponent
                         {...(restProps as any)}
                         ref={forwardedRef}

@@ -5,7 +5,7 @@ import React, {
   useMemo,
 } from 'react';
 import {StyleProp, StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import Animated, {withSpring, withTiming} from 'react-native-reanimated';
+import {AnimatedStyle, withSpring, withTiming} from 'react-native-reanimated';
 import {useMemoObject} from '@rozhkov/react-useful-hooks';
 import {
   AnimConfig,
@@ -125,10 +125,9 @@ const buildStaticStyles = ({
 
 type DayContainerAnimatedStyle = (
   isSelected: boolean,
-) => Animated.AnimateStyle<ViewStyle>;
-type DayTitleAnimatedStyle = (
-  isSelected: boolean,
-) => Animated.AnimateStyle<TextStyle>;
+  isToday?: boolean,
+) => AnimatedStyle;
+type DayTitleAnimatedStyle = (isSelected: boolean) => AnimatedStyle;
 
 type CalendarBaseAnimatedStyles = {
   dayContainerAnimatedStyle: DayContainerAnimatedStyle;
@@ -160,18 +159,20 @@ const getStaticOrAnimate = <ValueT extends string | number>(
   }
 };
 
-const useCalendarBaseAnimatedStyles = ({
-  dayBgColor,
-  daySelectedBgColor,
-  dayColor,
-  daySelectedColor,
-}: CalendarTheme): CalendarBaseAnimatedStyles => {
+const useCalendarBaseAnimatedStyles = (
+  {dayBgColor, daySelectedBgColor, dayColor, daySelectedColor}: CalendarTheme,
+  isTodayBgColor?: string,
+): CalendarBaseAnimatedStyles => {
   const dayContainerAnimatedStyle = useCallback<DayContainerAnimatedStyle>(
-    (isSelected) => {
+    (isSelected, isToday) => {
       'worklet';
       return {
         backgroundColor: getStaticOrAnimate(
-          isSelected ? daySelectedBgColor : dayBgColor,
+          isSelected
+            ? daySelectedBgColor
+            : isToday
+            ? isTodayBgColor || 'transparent'
+            : dayBgColor,
         ),
       };
     },
@@ -223,6 +224,7 @@ export type CalendarStyles = {
   dayTextStyle: StyleProp<TextStyle> | DayTextStyleFn | undefined;
   dayDotRowStyle: StyleProp<ViewStyle> | undefined;
   dayDotStyle: StyleProp<ViewStyle> | undefined;
+  isTodayBgColor?: string;
 };
 
 type StylesContextValue = {
@@ -237,7 +239,10 @@ type StylesProviderProps = PropsWithChildren<CalendarStyles>;
 const StylesProvider = ({children, ...restProps}: StylesProviderProps) => {
   const theme = useTheme();
   const staticStyles = useMemo(() => buildStaticStyles(theme), [theme]);
-  const animatedStyles = useCalendarBaseAnimatedStyles(theme);
+  const animatedStyles = useCalendarBaseAnimatedStyles(
+    theme,
+    restProps.isTodayBgColor,
+  );
   const baseStyles = useMemo<CalendarBaseStyles>(
     () => ({...staticStyles, ...animatedStyles}),
     [animatedStyles, staticStyles],
